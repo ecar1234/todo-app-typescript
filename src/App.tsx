@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import TodoListItem from 'TodoListItem';
+import TodoList from 'TodoList';
+import AddTodoFrom from 'AddTodoFrom';
+
+
 
 const initialTodos: Array<Todo> = [
   { text: "work", complete: true },
@@ -7,7 +10,9 @@ const initialTodos: Array<Todo> = [
 ]
 
 const App: React.FC = () => {
+
 const [todos, setTodos] = useState(initialTodos);
+
 const toggleTodo: ToggleTodo = (selectedTodo) => {
   const newTodos = todos.map(todo => {
     if (todo === selectedTodo){
@@ -21,10 +26,15 @@ const toggleTodo: ToggleTodo = (selectedTodo) => {
   setTodos(newTodos);
 }
 
+const addTodo: AddTodo = newTodo => {
+  newTodo.trim() !== "" &&
+  setTodos([...todos, {text: newTodo, complete: false}]);
+}
+
   return (
     <React.Fragment>
-      <TodoListItem todo={todos[0]} toggleTodo={toggleTodo} />
-      <TodoListItem todo={todos[1]} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <AddTodoFrom addTodo={addTodo} />
     </React.Fragment>
   );
 };
