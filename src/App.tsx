@@ -4,10 +4,8 @@ import AddTodoFrom from 'AddTodoFrom';
 
 
 
-const initialTodos: Array<Todo> = [
-  { text: "work", complete: true },
-  { text: "none work", complete: false} 
-]
+const initialTodos: Array<Todo> = []
+  
 
 const App: React.FC = () => {
 

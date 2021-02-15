@@ -1,5 +1,5 @@
 type Todo = {
-  text: string;
+  text: string | null;
   complete: boolean;
 }
 
